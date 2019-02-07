@@ -7,21 +7,43 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		038EB38A6A952FBA69123D31 /* Pods_trainTimeApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5D70EF4BF4E786EDFCFBBDE /* Pods_trainTimeApp.framework */; };
 		432CBE02220BFB490064D2CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432CBE01220BFB490064D2CA /* AppDelegate.swift */; };
-		432CBE04220BFB490064D2CA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432CBE03220BFB490064D2CA /* ViewController.swift */; };
 		432CBE07220BFB490064D2CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 432CBE05220BFB490064D2CA /* Main.storyboard */; };
 		432CBE09220BFB4B0064D2CA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 432CBE08220BFB4B0064D2CA /* Assets.xcassets */; };
 		432CBE0C220BFB4B0064D2CA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 432CBE0A220BFB4B0064D2CA /* LaunchScreen.storyboard */; };
+		432CBE14220BFE8F0064D2CA /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432CBE13220BFE8F0064D2CA /* FirstViewController.swift */; };
+		432CBE17220C07F20064D2CA /* httpMeghod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432CBE16220C07F20064D2CA /* httpMeghod.swift */; };
+		432CBE19220C08B70064D2CA /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432CBE18220C08B70064D2CA /* SecondViewController.swift */; };
+		432CBE1B220C09840064D2CA /* UpperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432CBE1A220C09840064D2CA /* UpperViewController.swift */; };
+		432CBE1D220C11020064D2CA /* THSRInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432CBE1C220C11020064D2CA /* THSRInfo.swift */; };
+		432CBE1F220C12360064D2CA /* UpperTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432CBE1E220C12360064D2CA /* UpperTableViewController.swift */; };
+		432CBE21220C125C0064D2CA /* UpperTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432CBE20220C125C0064D2CA /* UpperTableViewCell.swift */; };
+		432CBE24220C333F0064D2CA /* LowerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432CBE23220C333F0064D2CA /* LowerViewController.swift */; };
+		432CBE27220C33620064D2CA /* LowerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432CBE26220C33620064D2CA /* LowerTableViewController.swift */; };
+		432CBE29220C33B80064D2CA /* LowerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432CBE28220C33B80064D2CA /* LowerTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		432CBDFE220BFB490064D2CA /* trainTimeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = trainTimeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		432CBE01220BFB490064D2CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		432CBE03220BFB490064D2CA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		432CBE06220BFB490064D2CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		432CBE08220BFB4B0064D2CA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		432CBE0B220BFB4B0064D2CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		432CBE0D220BFB4B0064D2CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		432CBE13220BFE8F0064D2CA /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		432CBE16220C07F20064D2CA /* httpMeghod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = httpMeghod.swift; sourceTree = "<group>"; };
+		432CBE18220C08B70064D2CA /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		432CBE1A220C09840064D2CA /* UpperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpperViewController.swift; sourceTree = "<group>"; };
+		432CBE1C220C11020064D2CA /* THSRInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = THSRInfo.swift; sourceTree = "<group>"; };
+		432CBE1E220C12360064D2CA /* UpperTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpperTableViewController.swift; sourceTree = "<group>"; };
+		432CBE20220C125C0064D2CA /* UpperTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpperTableViewCell.swift; sourceTree = "<group>"; };
+		432CBE23220C333F0064D2CA /* LowerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LowerViewController.swift; sourceTree = "<group>"; };
+		432CBE26220C33620064D2CA /* LowerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LowerTableViewController.swift; sourceTree = "<group>"; };
+		432CBE28220C33B80064D2CA /* LowerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LowerTableViewCell.swift; sourceTree = "<group>"; };
+		B5D70EF4BF4E786EDFCFBBDE /* Pods_trainTimeApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_trainTimeApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE768B09EB0FF5A333FD5B57 /* Pods-trainTimeApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-trainTimeApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-trainTimeApp/Pods-trainTimeApp.debug.xcconfig"; sourceTree = "<group>"; };
+		F94A977C95F7FC3480841DC9 /* Pods-trainTimeApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-trainTimeApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-trainTimeApp/Pods-trainTimeApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +51,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				038EB38A6A952FBA69123D31 /* Pods_trainTimeApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04242F9C09AC04A87A6A21A6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DE768B09EB0FF5A333FD5B57 /* Pods-trainTimeApp.debug.xcconfig */,
+				F94A977C95F7FC3480841DC9 /* Pods-trainTimeApp.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		432CBDF5220BFB480064D2CA = {
 			isa = PBXGroup;
 			children = (
 				432CBE00220BFB490064D2CA /* trainTimeApp */,
 				432CBDFF220BFB490064D2CA /* Products */,
+				04242F9C09AC04A87A6A21A6 /* Pods */,
+				A3DA339558D283B65E468BB9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +88,55 @@
 		432CBE00220BFB490064D2CA /* trainTimeApp */ = {
 			isa = PBXGroup;
 			children = (
+				432CBE16220C07F20064D2CA /* httpMeghod.swift */,
 				432CBE01220BFB490064D2CA /* AppDelegate.swift */,
-				432CBE03220BFB490064D2CA /* ViewController.swift */,
+				432CBE15220BFEAB0064D2CA /* VC */,
 				432CBE05220BFB490064D2CA /* Main.storyboard */,
 				432CBE08220BFB4B0064D2CA /* Assets.xcassets */,
 				432CBE0A220BFB4B0064D2CA /* LaunchScreen.storyboard */,
 				432CBE0D220BFB4B0064D2CA /* Info.plist */,
 			);
 			path = trainTimeApp;
+			sourceTree = "<group>";
+		};
+		432CBE15220BFEAB0064D2CA /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				432CBE13220BFE8F0064D2CA /* FirstViewController.swift */,
+				432CBE18220C08B70064D2CA /* SecondViewController.swift */,
+				432CBE22220C12660064D2CA /* Upper */,
+				432CBE25220C33430064D2CA /* Lower */,
+			);
+			path = VC;
+			sourceTree = "<group>";
+		};
+		432CBE22220C12660064D2CA /* Upper */ = {
+			isa = PBXGroup;
+			children = (
+				432CBE1A220C09840064D2CA /* UpperViewController.swift */,
+				432CBE1E220C12360064D2CA /* UpperTableViewController.swift */,
+				432CBE20220C125C0064D2CA /* UpperTableViewCell.swift */,
+				432CBE1C220C11020064D2CA /* THSRInfo.swift */,
+			);
+			path = Upper;
+			sourceTree = "<group>";
+		};
+		432CBE25220C33430064D2CA /* Lower */ = {
+			isa = PBXGroup;
+			children = (
+				432CBE23220C333F0064D2CA /* LowerViewController.swift */,
+				432CBE26220C33620064D2CA /* LowerTableViewController.swift */,
+				432CBE28220C33B80064D2CA /* LowerTableViewCell.swift */,
+			);
+			path = Lower;
+			sourceTree = "<group>";
+		};
+		A3DA339558D283B65E468BB9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B5D70EF4BF4E786EDFCFBBDE /* Pods_trainTimeApp.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +146,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 432CBE10220BFB4B0064D2CA /* Build configuration list for PBXNativeTarget "trainTimeApp" */;
 			buildPhases = (
+				87E1B439B55A78D65D984868 /* [CP] Check Pods Manifest.lock */,
 				432CBDFA220BFB490064D2CA /* Sources */,
 				432CBDFB220BFB490064D2CA /* Frameworks */,
 				432CBDFC220BFB490064D2CA /* Resources */,
+				77896004EE762D10823C9A8D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -130,13 +207,71 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		77896004EE762D10823C9A8D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-trainTimeApp/Pods-trainTimeApp-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-trainTimeApp/Pods-trainTimeApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		87E1B439B55A78D65D984868 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-trainTimeApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		432CBDFA220BFB490064D2CA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				432CBE04220BFB490064D2CA /* ViewController.swift in Sources */,
+				432CBE1F220C12360064D2CA /* UpperTableViewController.swift in Sources */,
+				432CBE19220C08B70064D2CA /* SecondViewController.swift in Sources */,
+				432CBE24220C333F0064D2CA /* LowerViewController.swift in Sources */,
+				432CBE27220C33620064D2CA /* LowerTableViewController.swift in Sources */,
+				432CBE21220C125C0064D2CA /* UpperTableViewCell.swift in Sources */,
 				432CBE02220BFB490064D2CA /* AppDelegate.swift in Sources */,
+				432CBE1D220C11020064D2CA /* THSRInfo.swift in Sources */,
+				432CBE14220BFE8F0064D2CA /* FirstViewController.swift in Sources */,
+				432CBE1B220C09840064D2CA /* UpperViewController.swift in Sources */,
+				432CBE29220C33B80064D2CA /* LowerTableViewCell.swift in Sources */,
+				432CBE17220C07F20064D2CA /* httpMeghod.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,6 +415,7 @@
 		};
 		432CBE11220BFB4B0064D2CA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DE768B09EB0FF5A333FD5B57 /* Pods-trainTimeApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -292,12 +428,13 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.jaychung.trainTimeApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		432CBE12220BFB4B0064D2CA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F94A977C95F7FC3480841DC9 /* Pods-trainTimeApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -310,7 +447,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.jaychung.trainTimeApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
