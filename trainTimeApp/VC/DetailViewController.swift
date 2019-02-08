@@ -17,17 +17,24 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     
-    var tmpDateText = ""
-    var tmpTrainNo = ""
-    var tmpStart = ""
-    var tmpEnd = ""
+    //detail data
+    var detailSelectedDate = ""
+    var detailTrainNo = ""
+    var detailStart = ""
+    var detailEnd = ""
+    
+    //detail table data
+    var destinationStation:[String] = []
+    var destinationArrivalTime:[String] = []
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        dateText.text = tmpDateText
-        trainNo.text = tmpTrainNo
-        startAndend.text = "\(tmpStart)~\(tmpEnd)"
+        dateText.text = "日期:\(detailSelectedDate)"
+        trainNo.text = "車次:\(detailTrainNo)"
+        startAndend.text = "起迄站:\(detailStart)~\(detailEnd)"
         
     }
     
@@ -37,14 +44,17 @@ class DetailViewController: UIViewController {
 extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return destinationStation.count
     }
     
-
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! DetailViewCell
+        
+        cell.destinationStation.text = destinationStation[indexPath.row]
+        cell.destinationArrivalTime.text = destinationArrivalTime[indexPath.row]
+        
         
         return cell
         

@@ -10,6 +10,10 @@ import UIKit
 
 class DetailViewCell: UITableViewCell {
 
+    @IBOutlet weak var destinationStation: UILabel!
+    @IBOutlet weak var destinationArrivalTime: UILabel!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

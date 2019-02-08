@@ -27,9 +27,10 @@ class LowerViewController: UIViewController {
     let trainInfo = TrainInfo()
     
     //train
-    var trainNo = [Int]()
+    var trainNo = [String]()
     var trainArrivalTime = [String]()
     
+    //detail data
     
     
     //No deleagate
@@ -118,7 +119,7 @@ class LowerViewController: UIViewController {
                         
                         ////////////
                         
-                        self.trainNo.append(data2.intValue)
+                        self.trainNo.append(data2.stringValue)
                         self.trainArrivalTime.append(data3.stringValue)
                 
                         }
@@ -142,11 +143,12 @@ class LowerViewController: UIViewController {
         print(Thread.isMainThread)
         if segue.destination is LowerTableViewController {
             let vc = segue.destination as? LowerTableViewController
-            //reset
-            vc?.resetDataArray()
             //data
             vc?.trainNo = self.trainNo
             vc?.trainArrivalTime = self.trainArrivalTime
+    
+            //date passing
+            vc?.detailSelectedDate = self.selectedDate
             
             print(self.trainNo)
 //            self.activityIndicator.stopAnimating()

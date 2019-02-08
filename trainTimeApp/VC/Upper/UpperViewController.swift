@@ -37,7 +37,7 @@ class UpperViewController: UIViewController {
     let trainInfo = TrainInfo()
     
     //train
-    var trainNo = [Int]()
+    var trainNo = [String]()
     var startArrivalTime = [String]()
     var endArrivalTime = [String]()
     var trainTimeInterval = [String]()
@@ -324,7 +324,7 @@ class UpperViewController: UIViewController {
                         
                         ////////////
                         
-                        self.trainNo.append(data2.intValue)
+                        self.trainNo.append(data2.stringValue)
                         self.startArrivalTime.append(data3.stringValue)
                         self.endArrivalTime.append(data4.stringValue)
                         
@@ -393,7 +393,7 @@ class UpperViewController: UIViewController {
             vc?.laterStation = endText
             
             //date passing
-            vc?.selectedDate = self.selectedDate
+            vc?.detailSelectedDate = self.selectedDate
             
             print(self.trainNo)
             self.activityIndicator.stopAnimating()
