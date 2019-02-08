@@ -21,5 +21,10 @@ class SecondViewController: UIViewController {
         performSegue(withIdentifier: "goToTHSRTIme", sender: nil)
     }
     
+    
+    @IBAction func lowerButtonPressed(_ sender: Any) {
+        performSegue(withIdentifier: "goToTHSRTIme2", sender: nil)
+    }
+    
 
 }

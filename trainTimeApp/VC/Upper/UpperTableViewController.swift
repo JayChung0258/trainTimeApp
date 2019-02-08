@@ -16,6 +16,8 @@ class UpperTableViewController: UITableViewController {
     var endArrivalTime: [String]?
     var trainTimeInterval: [String]?
     
+    var selectedDate = ""
+    
     //title
     var formerStation: String = ""
     var laterStation: String = ""
@@ -37,7 +39,7 @@ class UpperTableViewController: UITableViewController {
         startArrivalTime = []
         endArrivalTime = []
         trainTimeInterval = []
-        print("Reset in List method triggered")
+        print("Reset in UpperTableViewController triggered")
     }
 
     // MARK: - Table view data source
@@ -47,6 +49,7 @@ class UpperTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! UpperTableViewCell
         
         if let no = trainNo?[indexPath.row], let sat = startArrivalTime?[indexPath.row], let eat = endArrivalTime?[indexPath.row], let interval = trainTimeInterval?[indexPath.row]
@@ -61,6 +64,14 @@ class UpperTableViewController: UITableViewController {
         return cell
         
 
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(indexPath.row)
+        
+        performSegue(withIdentifier: "goToTHSRDetail", sender: nil)
+        
+        
     }
 
 }

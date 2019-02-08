@@ -22,6 +22,8 @@
 		432CBE24220C333F0064D2CA /* LowerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432CBE23220C333F0064D2CA /* LowerViewController.swift */; };
 		432CBE27220C33620064D2CA /* LowerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432CBE26220C33620064D2CA /* LowerTableViewController.swift */; };
 		432CBE29220C33B80064D2CA /* LowerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432CBE28220C33B80064D2CA /* LowerTableViewCell.swift */; };
+		432CBE34220D7C100064D2CA /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432CBE2E220D72000064D2CA /* DetailViewController.swift */; };
+		432CBE37220D7CD40064D2CA /* DetailViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432CBE36220D7CD40064D2CA /* DetailViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +43,8 @@
 		432CBE23220C333F0064D2CA /* LowerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LowerViewController.swift; sourceTree = "<group>"; };
 		432CBE26220C33620064D2CA /* LowerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LowerTableViewController.swift; sourceTree = "<group>"; };
 		432CBE28220C33B80064D2CA /* LowerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LowerTableViewCell.swift; sourceTree = "<group>"; };
+		432CBE2E220D72000064D2CA /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		432CBE36220D7CD40064D2CA /* DetailViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewCell.swift; sourceTree = "<group>"; };
 		B5D70EF4BF4E786EDFCFBBDE /* Pods_trainTimeApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_trainTimeApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE768B09EB0FF5A333FD5B57 /* Pods-trainTimeApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-trainTimeApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-trainTimeApp/Pods-trainTimeApp.debug.xcconfig"; sourceTree = "<group>"; };
 		F94A977C95F7FC3480841DC9 /* Pods-trainTimeApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-trainTimeApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-trainTimeApp/Pods-trainTimeApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -104,6 +108,8 @@
 			children = (
 				432CBE13220BFE8F0064D2CA /* FirstViewController.swift */,
 				432CBE18220C08B70064D2CA /* SecondViewController.swift */,
+				432CBE2E220D72000064D2CA /* DetailViewController.swift */,
+				432CBE36220D7CD40064D2CA /* DetailViewCell.swift */,
 				432CBE22220C12660064D2CA /* Upper */,
 				432CBE25220C33430064D2CA /* Lower */,
 			);
@@ -261,6 +267,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				432CBE34220D7C100064D2CA /* DetailViewController.swift in Sources */,
 				432CBE1F220C12360064D2CA /* UpperTableViewController.swift in Sources */,
 				432CBE19220C08B70064D2CA /* SecondViewController.swift in Sources */,
 				432CBE24220C333F0064D2CA /* LowerViewController.swift in Sources */,
@@ -272,6 +279,7 @@
 				432CBE1B220C09840064D2CA /* UpperViewController.swift in Sources */,
 				432CBE29220C33B80064D2CA /* LowerTableViewCell.swift in Sources */,
 				432CBE17220C07F20064D2CA /* httpMeghod.swift in Sources */,
+				432CBE37220D7CD40064D2CA /* DetailViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

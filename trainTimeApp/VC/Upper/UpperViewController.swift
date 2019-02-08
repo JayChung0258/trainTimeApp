@@ -18,9 +18,16 @@ class UpperViewController: UIViewController {
     @IBOutlet weak var stationText: UITextField!
     @IBOutlet weak var dateText: UITextField!
     
+    //default
+    let defaults = UserDefaults.standard
+    
     //
     var startText = ""
     var endText = ""
+    
+    //
+    var startStationIndex = 0
+    var endStationIndex = 0
     
     
     //picker
@@ -39,10 +46,7 @@ class UpperViewController: UIViewController {
     var APIUrl = ""
     var station = ["南港","台北","板橋","桃園","新竹","苗栗","台中","彰化","雲林","嘉義","台南","左營"]
     
-    //
-    var tmpStart: Int = 0
-    var tmpEnd: Int = 0
-    
+
     //activity indicator
     var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
     
@@ -54,6 +58,8 @@ class UpperViewController: UIViewController {
     var minuteInt = 0
     var minuteWithLeadingZero = ""
     var minute = ""
+    
+    //important transport data
     var startStationNo = 0
     var endStationNo = 0
     var selectedDate: String = ""
@@ -62,14 +68,41 @@ class UpperViewController: UIViewController {
         self.view.endEditing(true)
     }
     
+    fileprivate func defaultsGetData() {
+        startText = defaults.string(forKey: "THSRUpperViewController_startText") ?? "南港"
+        endText = defaults.string(forKey: "THSRUpperViewController_endText") ?? "南港"
+        startStationIndex = defaults.integer(forKey: "THSRUpperViewController_startStationIndex")
+        endStationIndex = defaults.integer(forKey: "THSRUpperViewController_endStationIndex")
+        
+        stationPicker.selectRow(startStationIndex, inComponent: 0, animated: true)
+        stationPicker.selectRow(endStationIndex, inComponent: 1, animated: true)
+        
+        startStationNo = trainInfo.trainNoKeypair[startText]!
+        endStationNo = trainInfo.trainNoKeypair[endText]!
+
+    }
+    
+    fileprivate func defaultsStoreData() {
+        defaults.set(startText, forKey: "THSRUpperViewController_startText")
+        defaults.set(endText, forKey: "THSRUpperViewController_endText")
+        defaults.set(startStationIndex, forKey: "THSRUpperViewController_startStationIndex")
+        defaults.set(endStationIndex, forKey: "THSRUpperViewController_endStationIndex")
+    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //pciker
+        //picker
         stationPicker.delegate = self
         stationPicker.dataSource = self
         stationText.inputView = stationPicker
+        
+        //get data
+        defaultsGetData()
+        
+        //set default text
+        stationText.text = "\(startText)至\(endText)"
 
         
         //set default date
@@ -181,7 +214,7 @@ class UpperViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.resetDataArray()
-        print("go to search view")
+        print("Now on upperViewController")
     }
     
     func generateTimeIntervalHour(input: String) -> String {
@@ -214,7 +247,7 @@ class UpperViewController: UIViewController {
         startArrivalTime = []
         endArrivalTime = []
         trainTimeInterval = []
-        print("Reset in Table method triggered")
+        print("Reset in UpperViewController triggered")
     }
 
 //////////////////////////////
@@ -224,11 +257,25 @@ class UpperViewController: UIViewController {
     
     @IBAction func buttonPressed(_ sender: Any) {
         
-        APIUrl = "https://ptx.transportdata.tw/MOTC/v2/Rail/THSR/DailyTimetable/OD/"+"\(startStationNo)"+"/to/"+"\(endStationNo)"+"/"+"\(selectedDate)"+"?$top=200&$format=JSON&$orderby=OriginStopTime/ArrivalTime&$filter=OriginStopTime/ArrivalTime%20ge%20%27\(hour):\(minute)%27"
+        if startStationNo == 990 {
+            APIUrl = "https://ptx.transportdata.tw/MOTC/v2/Rail/THSR/DailyTimetable/OD/"+"0\(startStationNo)"+"/to/"+"\(endStationNo)"+"/"+"\(selectedDate)"+"?$top=200&$format=JSON&$orderby=OriginStopTime/ArrivalTime&$filter=OriginStopTime/ArrivalTime%20ge%20%27\(hour):\(minute)%27"
+        }
+        else if endStationNo == 990 {
+            APIUrl = "https://ptx.transportdata.tw/MOTC/v2/Rail/THSR/DailyTimetable/OD/"+"\(startStationNo)"+"/to/"+"0\(endStationNo)"+"/"+"\(selectedDate)"+"?$top=200&$format=JSON&$orderby=OriginStopTime/ArrivalTime&$filter=OriginStopTime/ArrivalTime%20ge%20%27\(hour):\(minute)%27"
+        }else{
+            APIUrl = "https://ptx.transportdata.tw/MOTC/v2/Rail/THSR/DailyTimetable/OD/"+"\(startStationNo)"+"/to/"+"\(endStationNo)"+"/"+"\(selectedDate)"+"?$top=200&$format=JSON&$orderby=OriginStopTime/ArrivalTime&$filter=OriginStopTime/ArrivalTime%20ge%20%27\(hour):\(minute)%27"
+        }
         
         let request = setUpUrl(APIUrl: APIUrl)
         
         print("\(APIUrl)")
+        
+        //loading animatind and ignore user tap
+        self.startAnimating()
+        UIApplication.shared.beginIgnoringInteractionEvents()
+        
+        stationText.endEditing(true)
+        dateText.endEditing(true)
         
         Alamofire.request(request).responseJSON { response in
             do{
@@ -322,6 +369,8 @@ class UpperViewController: UIViewController {
                 UIApplication.shared.endIgnoringInteractionEvents()
             }
         }
+        
+        defaultsStoreData()
     
         
     }
@@ -341,7 +390,10 @@ class UpperViewController: UIViewController {
             vc?.trainTimeInterval = self.trainTimeInterval
             //title
             vc?.formerStation = startText
-            vc?.laterStation = endText 
+            vc?.laterStation = endText
+            
+            //date passing
+            vc?.selectedDate = self.selectedDate
             
             print(self.trainNo)
             self.activityIndicator.stopAnimating()
@@ -377,12 +429,14 @@ extension UpperViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
         if component == 0 {
+            startStationIndex = pickerView.selectedRow(inComponent: 0)
             startStationNo = trainInfo.trainNoKeypair[station[row]]!
             print(startStationNo)
             startText = station[row]
             stationText.text = "\(startText)至\(endText)"
         }
         else if component == 1 {
+            endStationIndex = pickerView.selectedRow(inComponent: 1)
             endStationNo = trainInfo.trainNoKeypair[station[row]]!
             print(endStationNo)
             endText = station[row]

@@ -1,20 +1,15 @@
 //
-//  LowerTableViewCell.swift
+//  DetailViewCell.swift
 //  trainTimeApp
 //
-//  Created by 洪丞桀 on 2019/2/7.
+//  Created by 洪丞桀 on 2019/2/8.
 //  Copyright © 2019 JayChung. All rights reserved.
 //
 
 import UIKit
 
-class LowerTableViewCell: UITableViewCell {
+class DetailViewCell: UITableViewCell {
 
-    @IBOutlet weak var trainNo: UILabel!
-    @IBOutlet weak var trainArrivalTime: UILabel!
-    
-    
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
