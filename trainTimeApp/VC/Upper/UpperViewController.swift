@@ -202,6 +202,7 @@ class UpperViewController: UIViewController {
         
     }
     
+    //activity
     fileprivate func startAnimating() {
         self.activityIndicator.center = self.view.center
         self.activityIndicator.hidesWhenStopped = true
@@ -382,7 +383,6 @@ class UpperViewController: UIViewController {
         print(Thread.isMainThread)
         if segue.destination is UpperTableViewController {
             let vc = segue.destination as? UpperTableViewController
-            vc?.resetDataArray()
             //data
             vc?.trainNo = self.trainNo
             vc?.startArrivalTime = self.startArrivalTime

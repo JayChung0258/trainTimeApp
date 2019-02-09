@@ -15,6 +15,9 @@ class LowerViewController: UIViewController {
     
     @IBOutlet weak var stationText: UITextField!
     
+    //default
+    let defaults = UserDefaults.standard
+    
     //
     var stationNoText = ""
     var directNoText = ""
@@ -33,10 +36,17 @@ class LowerViewController: UIViewController {
     //detail data
     
     
-    //No deleagate
+    //important transport
     var StationNo = 0
     var DirectNo = 0
     var selectedDate: String = ""
+    
+    //
+    var stationIndex = 0
+    var directIndex = 0
+    
+    
+    //delegate
     var hourInt = 0
     var hourWithLeadingZero = ""
     var hour = ""
@@ -48,6 +58,32 @@ class LowerViewController: UIViewController {
     var APIUrl = ""
     var station = ["南港","台北","板橋","桃園","新竹","苗栗","台中","彰化","雲林","嘉義","台南","左營"]
     var direction = ["北上","南下"]
+    
+    //activity indicator
+    var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
+    
+    fileprivate func defaultsGetData() {
+        stationNoText = defaults.string(forKey: "THSRLowerViewController_stationNoText") ?? "站別"
+        directNoText = defaults.string(forKey: "THSRLowerViewController_directNoText") ?? "方向"
+        stationIndex = defaults.integer(forKey: "THSRLowerViewController_stationIndex")
+        directIndex = defaults.integer(forKey: "THSRLowerViewController_directIndex")
+        StationNo = defaults.integer(forKey: "THSRLowerViewController_StationNo")
+        DirectNo = defaults.integer(forKey: "THSRLowerViewController_DirectNo")
+        
+        stationPicker.selectRow(stationIndex, inComponent: 0, animated: true)
+        stationPicker.selectRow(directIndex, inComponent: 1, animated: true)
+        
+    }
+    
+    fileprivate func defaultsStoreData() {
+        defaults.set(stationNoText, forKey: "THSRLowerViewController_stationNoText")
+        defaults.set(directNoText, forKey: "THSRLowerViewController_directNoText")
+        defaults.set(stationIndex, forKey: "THSRLowerViewController_stationIndex")
+        defaults.set(directIndex, forKey: "THSRLowerViewController_directIndex")
+        defaults.set(StationNo, forKey: "THSRLowerViewController_StationNo")
+        defaults.set(DirectNo, forKey: "THSRLowerViewController_DirectNo")
+       
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,6 +92,12 @@ class LowerViewController: UIViewController {
         stationPicker.delegate = self
         stationPicker.dataSource = self
         stationText.inputView = stationPicker
+        
+        //get data
+        defaultsGetData()
+        
+        //text
+        stationText.text = "\(stationNoText)/\(directNoText)"
         
         //set default date
         let dateFormatter = DateFormatter()
@@ -85,6 +127,15 @@ class LowerViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    //activity
+    fileprivate func startAnimating() {
+        self.activityIndicator.center = self.view.center
+        self.activityIndicator.hidesWhenStopped = true
+        self.activityIndicator.style = UIActivityIndicatorView.Style.gray
+        self.view.addSubview(self.activityIndicator)
+        self.activityIndicator.startAnimating()
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.resetDataArray()
@@ -103,6 +154,12 @@ class LowerViewController: UIViewController {
         APIUrl = "https://ptx.transportdata.tw/MOTC/v2/Rail/THSR/DailyTimetable/Station/"+"\(StationNo)"+"/"+"\(selectedDate)"+"?$filter=Direction%20eq%20'"+"\(DirectNo)"+"'%20and%20ArrivalTime%20ge%20'\(hour)%3A\(minute)'&$orderby=ArrivalTime&$top=30&$format=JSON"
         
         let request = setUpUrl(APIUrl: APIUrl)
+        
+        print("\(APIUrl)")
+        
+        //loading animatind and ignore user tap
+        self.startAnimating()
+        UIApplication.shared.beginIgnoringInteractionEvents()
         
         Alamofire.request(request).responseJSON { response in
             do{
@@ -126,15 +183,41 @@ class LowerViewController: UIViewController {
                     self.performSegue(withIdentifier: "goToTHSRTImeList2",sender: nil)
                         
                     }
+                else{
+                    print("Connect error")
+                    //alert
+                    let alert = UIAlertController(title: "請查看網路設定", message: "No Internet Connect!", preferredStyle: .alert)
+                    let action = UIAlertAction.init(title: "確定", style: .default) { (action) in
+                        
+                    }
+                    alert.addAction(action)
+                    self.present(alert, animated: true, completion: nil)
+                    
+                    self.activityIndicator.stopAnimating()
+                    UIApplication.shared.endIgnoringInteractionEvents()
+                    //POPUP "CANT SEARCH HISTORY"
+                }
                 
                 }
             catch {
-                print("ERROR")
+                print("ERROR in json \(error)")
+                
+                let alert = UIAlertController(title: "請查看網路設定", message: "No Internet Connect!", preferredStyle: .alert)
+                let action = UIAlertAction.init(title: "確定", style: .default) { (action) in
+                    
+                }
+                alert.addAction(action)
+                self.present(alert, animated: true, completion: nil)
+                
+                self.activityIndicator.stopAnimating()
+                UIApplication.shared.endIgnoringInteractionEvents()
             }
                     
-            }
+        }
         
-        print("\(APIUrl)")
+        
+        
+        defaultsStoreData()
     }
     
     
@@ -151,7 +234,8 @@ class LowerViewController: UIViewController {
             vc?.detailSelectedDate = self.selectedDate
             
             print(self.trainNo)
-//            self.activityIndicator.stopAnimating()
+            self.activityIndicator.stopAnimating()
+            UIApplication.shared.endIgnoringInteractionEvents()
         }
     }
     
@@ -189,6 +273,7 @@ extension LowerViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
         if component == 0 {
+            stationIndex = pickerView.selectedRow(inComponent: 0)
             print(station[row])
             StationNo = trainInfo.trainNoKeypair[station[row]]!
             stationNoText = "\(station[row])"
@@ -196,6 +281,7 @@ extension LowerViewController: UIPickerViewDataSource, UIPickerViewDelegate {
             
         }
         else if component == 1 {
+            directIndex = pickerView.selectedRow(inComponent: 1)
             print(direction[row])
             DirectNo = trainInfo.trainDirectKeyPair[direction[row]]!
             directNoText = "\(direction[row])"

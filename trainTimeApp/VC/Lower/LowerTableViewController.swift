@@ -28,6 +28,9 @@ class LowerTableViewController: UITableViewController {
     
     //api
     var APIUrl = ""
+    
+    //activity indicator
+    var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +43,15 @@ class LowerTableViewController: UITableViewController {
         destinationStation = []
         destinationArrivalTime = []
         print("Reset in LowerTableViewController triggered")
+    }
+    
+    //activity
+    fileprivate func startAnimating() {
+        self.activityIndicator.center = self.view.center
+        self.activityIndicator.hidesWhenStopped = true
+        self.activityIndicator.style = UIActivityIndicatorView.Style.gray
+        self.view.addSubview(self.activityIndicator)
+        self.activityIndicator.startAnimating()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -86,6 +98,10 @@ class LowerTableViewController: UITableViewController {
         
         print("\(APIUrl)")
         
+        //loading animatind and ignore user tap
+        self.startAnimating()
+        UIApplication.shared.beginIgnoringInteractionEvents()
+        
         Alamofire.request(request).responseJSON { response in
             do{
                 print(Thread.isMainThread)
@@ -115,7 +131,7 @@ class LowerTableViewController: UITableViewController {
                     }
                     
                     self.performSegue(withIdentifier: "goToTHSRDetail2",sender: nil)
-                    //                    UIApplication.shared.endIgnoringInteractionEvents()
+                    UIApplication.shared.endIgnoringInteractionEvents()
                 }
                     
                 else{
@@ -128,9 +144,8 @@ class LowerTableViewController: UITableViewController {
                     alert.addAction(action)
                     self.present(alert, animated: true, completion: nil)
                     
-                    //                    self.activityIndicator.stopAnimating()
-                    //                    UIApplication.shared.endIgnoringInteractionEvents()
-                    //POPUP "CANT SEARCH HISTORY"
+                    self.activityIndicator.stopAnimating()
+                    UIApplication.shared.endIgnoringInteractionEvents()
                 }
             }
             catch{
@@ -143,8 +158,8 @@ class LowerTableViewController: UITableViewController {
                 alert.addAction(action)
                 self.present(alert, animated: true, completion: nil)
                 
-                //                self.activityIndicator.stopAnimating()
-                //                UIApplication.shared.endIgnoringInteractionEvents()
+                self.activityIndicator.stopAnimating()
+                UIApplication.shared.endIgnoringInteractionEvents()
             }
         }
         
@@ -165,6 +180,8 @@ class LowerTableViewController: UITableViewController {
             vc?.destinationStation = self.destinationStation
             vc?.destinationArrivalTime = self.destinationArrivalTime
             
+            self.activityIndicator.stopAnimating()
+            UIApplication.shared.endIgnoringInteractionEvents()
         }
     }
 

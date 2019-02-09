@@ -20,6 +20,9 @@ class UpperTableViewController: UITableViewController {
     
     //api
     var APIUrl = ""
+    
+    //activity indicator
+    var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
 
     //data to detail
     var detailSelectedDate = ""
@@ -52,6 +55,15 @@ class UpperTableViewController: UITableViewController {
         destinationStation = []
         destinationArrivalTime = []
         print("Reset in UpperTableViewController triggered")
+    }
+    
+    //activity
+    fileprivate func startAnimating() {
+        self.activityIndicator.center = self.view.center
+        self.activityIndicator.hidesWhenStopped = true
+        self.activityIndicator.style = UIActivityIndicatorView.Style.gray
+        self.view.addSubview(self.activityIndicator)
+        self.activityIndicator.startAnimating()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -97,6 +109,11 @@ class UpperTableViewController: UITableViewController {
         
         print("\(APIUrl)")
         
+        //loading animatind and ignore user tap
+        self.startAnimating()
+        UIApplication.shared.beginIgnoringInteractionEvents()
+        
+        
         Alamofire.request(request).responseJSON { response in
             do{
                 print(Thread.isMainThread)
@@ -139,8 +156,8 @@ class UpperTableViewController: UITableViewController {
                     alert.addAction(action)
                     self.present(alert, animated: true, completion: nil)
                     
-//                    self.activityIndicator.stopAnimating()
-//                    UIApplication.shared.endIgnoringInteractionEvents()
+                    self.activityIndicator.stopAnimating()
+                    UIApplication.shared.endIgnoringInteractionEvents()
                     //POPUP "CANT SEARCH HISTORY"
                 }
             }
@@ -154,8 +171,8 @@ class UpperTableViewController: UITableViewController {
                 alert.addAction(action)
                 self.present(alert, animated: true, completion: nil)
                 
-//                self.activityIndicator.stopAnimating()
-//                UIApplication.shared.endIgnoringInteractionEvents()
+                self.activityIndicator.stopAnimating()
+                UIApplication.shared.endIgnoringInteractionEvents()
             }
         }
         
@@ -169,9 +186,7 @@ class UpperTableViewController: UITableViewController {
         
         if segue.destination is DetailViewController {
             let vc = segue.destination as? DetailViewController
-            
 
-            
             vc?.detailSelectedDate = self.detailSelectedDate
             vc?.detailTrainNo = self.detailTrainNo
             vc?.detailStart = self.detailStart
@@ -179,6 +194,8 @@ class UpperTableViewController: UITableViewController {
             
             vc?.destinationStation = self.destinationStation
             vc?.destinationArrivalTime = self.destinationArrivalTime
+            
+            self.activityIndicator.stopAnimating()
             
         }
     }
