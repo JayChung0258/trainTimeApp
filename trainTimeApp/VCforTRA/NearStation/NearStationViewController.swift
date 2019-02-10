@@ -7,6 +7,10 @@
 //
 import UIKit
 import GoogleMobileAds
+import Alamofire
+import SwiftyJSON
+
+
 
 class NearStationViewController: UIViewController {
     
@@ -22,15 +26,26 @@ class NearStationViewController: UIViewController {
     var trainNo: [String]?
     var trainDirection: [Int]?
     
-    //    self.trainDepart.append(data2.stringValue)
-    //    self.trainDestination.append(data3.stringValue)
-    //    self.trainArrivalTime.append(data4.stringValue)
-    //    self.trainType.append(data5.stringValue)
-    
+
     //GAD
     @IBOutlet weak var bannerView: GADBannerView!
 
     @IBOutlet weak var distanceText: UILabel!
+    
+    //data to detail
+    var detailSelectedDate = ""
+    var detailTrainNo = ""
+    var detailStart = ""
+    var detailEnd = ""
+    //data to detail table
+    var destinationStation: [String] = []
+    var destinationArrivalTime: [String] = []
+    
+    //api
+    var APIUrl = ""
+    
+    //activity indicator
+    var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,13 +54,35 @@ class NearStationViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         tableView.rowHeight = 80
-        tableView.allowsSelection = false
         
         //Ads set
         bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
         bannerView.rootViewController = self
         bannerView.load(GADRequest())
         
+    }
+    
+    
+    
+    func resetDataArray() {
+        destinationStation = []
+        destinationArrivalTime = []
+        print("Reset in NearStationViewController triggered")
+    }
+    
+    //activity
+    fileprivate func startAnimating() {
+        self.activityIndicator.center = self.view.center
+        self.activityIndicator.hidesWhenStopped = true
+        self.activityIndicator.style = UIActivityIndicatorView.Style.gray
+        self.view.addSubview(self.activityIndicator)
+        self.activityIndicator.startAnimating()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.resetDataArray()
+        print("Now on NearStationViewController")
     }
     
     
@@ -105,6 +142,104 @@ extension NearStationViewController: UITableViewDelegate, UITableViewDataSource 
         
     }
     
-
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(indexPath.row)
+        
+        detailTrainNo = trainNo![indexPath.row]
+        
+        //alamofire here and pss data to startEnd and table
+        
+        APIUrl = "https://ptx.transportdata.tw/MOTC/v2/Rail/TRA/DailyTimetable/TrainNo/"+"\(detailTrainNo)"+"/TrainDate/"+"\(detailSelectedDate)"+"?$top=30&$format=JSON"
+        
+        let request = setUpUrl(APIUrl: APIUrl)
+        
+        print("\(APIUrl)")
+        
+        //loading animatind and ignore user tap
+        self.startAnimating()
+        UIApplication.shared.beginIgnoringInteractionEvents()
+        
+        Alamofire.request(request).responseJSON { response in
+            do{
+                print(Thread.isMainThread)
+                let json: JSON = try JSON(data: response.data!)
+                
+                if let result = json.array {
+                    for data in result {
+                        
+                        let data2 = data["DailyTrainInfo"]["StartingStationName"]["Zh_tw"]
+                        let data3 = data["DailyTrainInfo"]["EndingStationName"]["Zh_tw"]
+                        
+                        self.detailStart = data2.stringValue
+                        self.detailEnd = data3.stringValue
+                        
+                        //detail table data
+                        let InnerData = data["StopTimes"].arrayValue
+                        for data in InnerData {
+                            let data4 = data["StationName"]["Zh_tw"]
+                            let data5 = data["ArrivalTime"]
+                            print(data4)
+                            self.destinationStation.append(data4.stringValue)
+                            self.destinationArrivalTime.append(data5.stringValue)
+                            
+                        }
+                        
+                        
+                    }
+                    
+                    self.performSegue(withIdentifier: "goToTRADetail2",sender: nil)
+                    UIApplication.shared.endIgnoringInteractionEvents()
+                }
+                    
+                else{
+                    print("Connect error")
+                    //alert
+                    let alert = UIAlertController(title: "查無資料", message: "無法查詢歷史資料", preferredStyle: .alert)
+                    let action = UIAlertAction.init(title: "確定", style: .default) { (action) in
+                        
+                    }
+                    alert.addAction(action)
+                    self.present(alert, animated: true, completion: nil)
+                    
+                    self.activityIndicator.stopAnimating()
+                    UIApplication.shared.endIgnoringInteractionEvents()
+                }
+            }
+            catch{
+                print("ERROR in json \(error)")
+                
+                let alert = UIAlertController(title: "請查看網路設定", message: "No Internet Connect!", preferredStyle: .alert)
+                let action = UIAlertAction.init(title: "確定", style: .default) { (action) in
+                    
+                }
+                alert.addAction(action)
+                self.present(alert, animated: true, completion: nil)
+                
+                self.activityIndicator.stopAnimating()
+                UIApplication.shared.endIgnoringInteractionEvents()
+            }
+        }
+        
+        //////////////////
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.destination is TRADetailViewController {
+            let vc = segue.destination as? TRADetailViewController
+            
+            vc?.detailSelectedDate = self.detailSelectedDate
+            vc?.detailTrainNo = self.detailTrainNo
+            vc?.detailStart = self.detailStart
+            vc?.detailEnd = self.detailEnd
+            
+            vc?.destinationStation = self.destinationStation
+            vc?.destinationArrivalTime = self.destinationArrivalTime
+            
+            self.activityIndicator.stopAnimating()
+            UIApplication.shared.endIgnoringInteractionEvents()
+        }
+    }
     
 }

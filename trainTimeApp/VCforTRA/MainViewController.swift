@@ -44,6 +44,9 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     
     var locationManager = CLLocationManager()
     
+    //passing Detail
+    var selectedDate: String = ""
+    
     //Ads View set
     @IBOutlet weak var bannerView: GADBannerView!
     
@@ -73,6 +76,13 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
             locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
             locationManager.startUpdatingLocation()
         }
+        
+        //set default date
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        selectedDate = dateFormatter.string(from: Date())
+        
+        //
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -243,6 +253,9 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
             vc?.trainType = self.trainType
             vc?.trainNo = self.trainNo
             vc?.trainDirection = self.trainDirection
+            
+            //passing
+            vc?.detailSelectedDate = selectedDate
             
             self.activityIndicator.stopAnimating()
         }

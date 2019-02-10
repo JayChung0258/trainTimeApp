@@ -143,7 +143,7 @@ class UpperTableViewController: UITableViewController {
                     }
 
                     self.performSegue(withIdentifier: "goToTHSRDetail",sender: nil)
-//                    UIApplication.shared.endIgnoringInteractionEvents()
+                    UIApplication.shared.endIgnoringInteractionEvents()
                 }
                     
                 else{

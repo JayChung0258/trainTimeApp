@@ -600,6 +600,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="列車時刻" id="oQN-Pf-J9y"/>
+                    <connections>
+                        <segue destination="oWX-pK-mG6" kind="show" identifier="goToTRADetail" id="cdu-te-z0I"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ESA-ej-tp2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -736,6 +739,7 @@
                         <outlet property="bannerView" destination="Cm3-TN-vqn" id="Mz5-SX-a0v"/>
                         <outlet property="distanceText" destination="acu-Qg-lpJ" id="V8N-ka-Lla"/>
                         <outlet property="tableView" destination="ODd-h6-h27" id="Dbs-5h-ShN"/>
+                        <segue destination="oWX-pK-mG6" kind="show" identifier="goToTRADetail2" id="bKA-nm-ETv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qWb-O5-1yH" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -831,6 +835,89 @@
             </objects>
             <point key="canvasLocation" x="2591" y="-2052"/>
         </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="d5a-HQ-mkt">
+            <objects>
+                <viewController id="oWX-pK-mG6" customClass="TRADetailViewController" customModule="trainTimeApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dOD-Pd-YmG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8rQ-1S-shJ">
+                                <rect key="frame" x="29" y="68" width="177" height="62"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="TrainNo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="44E-fi-0pY">
+                                <rect key="frame" x="29" y="138" width="177" height="62"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Start-End" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5I5-kI-WwC">
+                                <rect key="frame" x="29" y="208" width="177" height="62"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vnI-rL-6FJ">
+                                <rect key="frame" x="68" y="316" width="239" height="273"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="yoa-iy-hmU" customClass="TRADetailTableViewCell" customModule="trainTimeApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="239" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yoa-iy-hmU" id="5ZS-3X-N5Y">
+                                            <rect key="frame" x="0.0" y="0.0" width="239" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="arrival" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kHb-Su-zp2">
+                                                    <rect key="frame" x="137" y="8" width="87" height="26"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Destination" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PIi-98-A0e">
+                                                    <rect key="frame" x="15" y="8" width="87" height="26"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="destinationArrivalTime" destination="kHb-Su-zp2" id="g87-4S-TuU"/>
+                                            <outlet property="destinationStation" destination="PIi-98-A0e" id="cGK-rW-KRg"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="oWX-pK-mG6" id="XeW-sc-cud"/>
+                                    <outlet property="delegate" destination="oWX-pK-mG6" id="aGj-z2-g4w"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="hLa-Fw-KMH"/>
+                    </view>
+                    <connections>
+                        <outlet property="dateText" destination="8rQ-1S-shJ" id="YU3-UV-Dk3"/>
+                        <outlet property="startAndend" destination="5I5-kI-WwC" id="iP9-Ad-ELm"/>
+                        <outlet property="tableView" destination="vnI-rL-6FJ" id="QZA-qb-51s"/>
+                        <outlet property="trainNo" destination="44E-fi-0pY" id="2V7-HH-7tg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jTR-yk-hj9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5793" y="-2052"/>
+        </scene>
     </scenes>
     <resources>
         <image name="arrow" width="16" height="16"/>
@@ -840,6 +927,7 @@
         <image name="schedule-button (1)" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="8v9-Pi-1mM"/>
+        <segue reference="bKA-nm-ETv"/>
+        <segue reference="Jl3-25-F7Z"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -31,6 +31,8 @@
 		432CBE4A2210076B0064D2CA /* trainInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432CBE412210076B0064D2CA /* trainInfo.swift */; };
 		432CBE4B2210076B0064D2CA /* TImeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432CBE422210076B0064D2CA /* TImeTableViewController.swift */; };
 		432CBE4C2210076B0064D2CA /* TimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432CBE432210076B0064D2CA /* TimeViewController.swift */; };
+		432CBE4E221017370064D2CA /* TRADetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432CBE4D221017370064D2CA /* TRADetailViewController.swift */; };
+		432CBE502210176A0064D2CA /* TRADetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432CBE4F2210176A0064D2CA /* TRADetailTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +61,8 @@
 		432CBE412210076B0064D2CA /* trainInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = trainInfo.swift; sourceTree = "<group>"; };
 		432CBE422210076B0064D2CA /* TImeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TImeTableViewController.swift; sourceTree = "<group>"; };
 		432CBE432210076B0064D2CA /* TimeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeViewController.swift; sourceTree = "<group>"; };
+		432CBE4D221017370064D2CA /* TRADetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRADetailViewController.swift; sourceTree = "<group>"; };
+		432CBE4F2210176A0064D2CA /* TRADetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TRADetailTableViewCell.swift; sourceTree = "<group>"; };
 		B5D70EF4BF4E786EDFCFBBDE /* Pods_trainTimeApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_trainTimeApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE768B09EB0FF5A333FD5B57 /* Pods-trainTimeApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-trainTimeApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-trainTimeApp/Pods-trainTimeApp.debug.xcconfig"; sourceTree = "<group>"; };
 		F94A977C95F7FC3480841DC9 /* Pods-trainTimeApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-trainTimeApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-trainTimeApp/Pods-trainTimeApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -156,6 +160,8 @@
 			isa = PBXGroup;
 			children = (
 				432CBE3A2210076B0064D2CA /* MainViewController.swift */,
+				432CBE4D221017370064D2CA /* TRADetailViewController.swift */,
+				432CBE4F2210176A0064D2CA /* TRADetailTableViewCell.swift */,
 				432CBE3B2210076B0064D2CA /* NearStation */,
 				432CBE3F2210076B0064D2CA /* TimeTable */,
 			);
@@ -316,6 +322,7 @@
 				432CBE492210076B0064D2CA /* TrainTableViewCell.swift in Sources */,
 				432CBE4B2210076B0064D2CA /* TImeTableViewController.swift in Sources */,
 				432CBE462210076B0064D2CA /* NearStationViewController.swift in Sources */,
+				432CBE502210176A0064D2CA /* TRADetailTableViewCell.swift in Sources */,
 				432CBE1F220C12360064D2CA /* UpperTableViewController.swift in Sources */,
 				432CBE4C2210076B0064D2CA /* TimeViewController.swift in Sources */,
 				432CBE4A2210076B0064D2CA /* trainInfo.swift in Sources */,
@@ -326,6 +333,7 @@
 				432CBE21220C125C0064D2CA /* UpperTableViewCell.swift in Sources */,
 				432CBE02220BFB490064D2CA /* AppDelegate.swift in Sources */,
 				432CBE1D220C11020064D2CA /* THSRInfo.swift in Sources */,
+				432CBE4E221017370064D2CA /* TRADetailViewController.swift in Sources */,
 				432CBE452210076B0064D2CA /* MainViewController.swift in Sources */,
 				432CBE14220BFE8F0064D2CA /* FirstViewController.swift in Sources */,
 				432CBE1B220C09840064D2CA /* UpperViewController.swift in Sources */,
