@@ -37,6 +37,8 @@ class NearStationViewController: UIViewController {
     var detailTrainNo = ""
     var detailStart = ""
     var detailEnd = ""
+    var detailType = ""
+    
     //data to detail table
     var destinationStation: [String] = []
     var destinationArrivalTime: [String] = []
@@ -146,6 +148,7 @@ extension NearStationViewController: UITableViewDelegate, UITableViewDataSource 
         print(indexPath.row)
         
         detailTrainNo = trainNo![indexPath.row]
+        detailType = trainType![indexPath.row]
         
         //alamofire here and pss data to startEnd and table
         
@@ -229,10 +232,12 @@ extension NearStationViewController: UITableViewDelegate, UITableViewDataSource 
         if segue.destination is TRADetailViewController {
             let vc = segue.destination as? TRADetailViewController
             
+            //passing
             vc?.detailSelectedDate = self.detailSelectedDate
             vc?.detailTrainNo = self.detailTrainNo
             vc?.detailStart = self.detailStart
             vc?.detailEnd = self.detailEnd
+            vc?.detailType = self.detailType
             
             vc?.destinationStation = self.destinationStation
             vc?.destinationArrivalTime = self.destinationArrivalTime

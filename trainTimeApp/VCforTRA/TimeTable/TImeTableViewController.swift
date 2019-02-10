@@ -35,6 +35,8 @@ class TImeTableViewController: UITableViewController {
     var detailTrainNo = ""
     var detailStart = ""
     var detailEnd = ""
+    var detailType = ""
+    
     //data to detail table
     var destinationStation: [String] = []
     var destinationArrivalTime: [String] = []
@@ -118,6 +120,7 @@ class TImeTableViewController: UITableViewController {
         print(indexPath.row)
         
         detailTrainNo = trainNo![indexPath.row]
+        detailType = trainTypeID![indexPath.row]
         
         //alamofire here and pss data to startEnd and table
         
@@ -208,6 +211,7 @@ class TImeTableViewController: UITableViewController {
             vc?.detailTrainNo = self.detailTrainNo
             vc?.detailStart = self.detailStart
             vc?.detailEnd = self.detailEnd
+            vc?.detailType = self.detailType
             
             vc?.destinationStation = self.destinationStation
             vc?.destinationArrivalTime = self.destinationArrivalTime

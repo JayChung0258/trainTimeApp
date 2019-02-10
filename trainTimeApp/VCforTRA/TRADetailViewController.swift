@@ -15,12 +15,14 @@ class TRADetailViewController: UIViewController {
     @IBOutlet weak var dateText: UILabel!
     @IBOutlet weak var trainNo: UILabel!
     @IBOutlet weak var startAndend: UILabel!
+    @IBOutlet weak var type: UILabel!
     
     //detail data
     var detailSelectedDate = ""
     var detailTrainNo = ""
     var detailStart = ""
     var detailEnd = ""
+    var detailType = "" 
     
     //detail table data
     var destinationStation:[String] = []
@@ -32,6 +34,7 @@ class TRADetailViewController: UIViewController {
         dateText.text = "日期:\(detailSelectedDate)"
         trainNo.text = "車次:\(detailTrainNo)"
         startAndend.text = "起迄站:\(detailStart)~\(detailEnd)"
+        type.text = "車種:\(detailType)"
     }
     
 
