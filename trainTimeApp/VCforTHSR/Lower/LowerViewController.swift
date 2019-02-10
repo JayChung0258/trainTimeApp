@@ -27,7 +27,7 @@ class LowerViewController: UIViewController {
     var stationPicker = UIPickerView()
     
     //delegateinfo
-    let trainInfo = TrainInfo()
+    let trainInfo = THSRTrainInfo()
     
     //train
     var trainNo = [String]()

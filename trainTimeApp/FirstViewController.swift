@@ -16,10 +16,15 @@ class FirstViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    @IBAction func TRAbuttonPressed(_ sender: Any) {
+        performSegue(withIdentifier: "goToTRA", sender: nil)
+    }
     
     @IBAction func THSRbuttonPressed(_ sender: Any) {
         performSegue(withIdentifier: "goToTHSR", sender: nil)
     }
+    
+    
     
 
 

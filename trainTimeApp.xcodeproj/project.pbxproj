@@ -24,6 +24,13 @@
 		432CBE29220C33B80064D2CA /* LowerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432CBE28220C33B80064D2CA /* LowerTableViewCell.swift */; };
 		432CBE34220D7C100064D2CA /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432CBE2E220D72000064D2CA /* DetailViewController.swift */; };
 		432CBE37220D7CD40064D2CA /* DetailViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432CBE36220D7CD40064D2CA /* DetailViewCell.swift */; };
+		432CBE452210076B0064D2CA /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432CBE3A2210076B0064D2CA /* MainViewController.swift */; };
+		432CBE462210076B0064D2CA /* NearStationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432CBE3C2210076B0064D2CA /* NearStationViewController.swift */; };
+		432CBE472210076B0064D2CA /* NearTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432CBE3D2210076B0064D2CA /* NearTableViewCell.swift */; };
+		432CBE492210076B0064D2CA /* TrainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432CBE402210076B0064D2CA /* TrainTableViewCell.swift */; };
+		432CBE4A2210076B0064D2CA /* trainInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432CBE412210076B0064D2CA /* trainInfo.swift */; };
+		432CBE4B2210076B0064D2CA /* TImeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432CBE422210076B0064D2CA /* TImeTableViewController.swift */; };
+		432CBE4C2210076B0064D2CA /* TimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432CBE432210076B0064D2CA /* TimeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +52,13 @@
 		432CBE28220C33B80064D2CA /* LowerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LowerTableViewCell.swift; sourceTree = "<group>"; };
 		432CBE2E220D72000064D2CA /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		432CBE36220D7CD40064D2CA /* DetailViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewCell.swift; sourceTree = "<group>"; };
+		432CBE3A2210076B0064D2CA /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		432CBE3C2210076B0064D2CA /* NearStationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NearStationViewController.swift; sourceTree = "<group>"; };
+		432CBE3D2210076B0064D2CA /* NearTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NearTableViewCell.swift; sourceTree = "<group>"; };
+		432CBE402210076B0064D2CA /* TrainTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainTableViewCell.swift; sourceTree = "<group>"; };
+		432CBE412210076B0064D2CA /* trainInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = trainInfo.swift; sourceTree = "<group>"; };
+		432CBE422210076B0064D2CA /* TImeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TImeTableViewController.swift; sourceTree = "<group>"; };
+		432CBE432210076B0064D2CA /* TimeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeViewController.swift; sourceTree = "<group>"; };
 		B5D70EF4BF4E786EDFCFBBDE /* Pods_trainTimeApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_trainTimeApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE768B09EB0FF5A333FD5B57 /* Pods-trainTimeApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-trainTimeApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-trainTimeApp/Pods-trainTimeApp.debug.xcconfig"; sourceTree = "<group>"; };
 		F94A977C95F7FC3480841DC9 /* Pods-trainTimeApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-trainTimeApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-trainTimeApp/Pods-trainTimeApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -92,9 +106,11 @@
 		432CBE00220BFB490064D2CA /* trainTimeApp */ = {
 			isa = PBXGroup;
 			children = (
+				432CBE13220BFE8F0064D2CA /* FirstViewController.swift */,
 				432CBE16220C07F20064D2CA /* httpMeghod.swift */,
 				432CBE01220BFB490064D2CA /* AppDelegate.swift */,
-				432CBE15220BFEAB0064D2CA /* VC */,
+				432CBE382210076B0064D2CA /* VCforTRA */,
+				432CBE15220BFEAB0064D2CA /* VCforTHSR */,
 				432CBE05220BFB490064D2CA /* Main.storyboard */,
 				432CBE08220BFB4B0064D2CA /* Assets.xcassets */,
 				432CBE0A220BFB4B0064D2CA /* LaunchScreen.storyboard */,
@@ -103,17 +119,17 @@
 			path = trainTimeApp;
 			sourceTree = "<group>";
 		};
-		432CBE15220BFEAB0064D2CA /* VC */ = {
+		432CBE15220BFEAB0064D2CA /* VCforTHSR */ = {
 			isa = PBXGroup;
 			children = (
-				432CBE13220BFE8F0064D2CA /* FirstViewController.swift */,
 				432CBE18220C08B70064D2CA /* SecondViewController.swift */,
 				432CBE2E220D72000064D2CA /* DetailViewController.swift */,
 				432CBE36220D7CD40064D2CA /* DetailViewCell.swift */,
+				432CBE1C220C11020064D2CA /* THSRInfo.swift */,
 				432CBE22220C12660064D2CA /* Upper */,
 				432CBE25220C33430064D2CA /* Lower */,
 			);
-			path = VC;
+			path = VCforTHSR;
 			sourceTree = "<group>";
 		};
 		432CBE22220C12660064D2CA /* Upper */ = {
@@ -122,7 +138,6 @@
 				432CBE1A220C09840064D2CA /* UpperViewController.swift */,
 				432CBE1E220C12360064D2CA /* UpperTableViewController.swift */,
 				432CBE20220C125C0064D2CA /* UpperTableViewCell.swift */,
-				432CBE1C220C11020064D2CA /* THSRInfo.swift */,
 			);
 			path = Upper;
 			sourceTree = "<group>";
@@ -135,6 +150,36 @@
 				432CBE28220C33B80064D2CA /* LowerTableViewCell.swift */,
 			);
 			path = Lower;
+			sourceTree = "<group>";
+		};
+		432CBE382210076B0064D2CA /* VCforTRA */ = {
+			isa = PBXGroup;
+			children = (
+				432CBE3A2210076B0064D2CA /* MainViewController.swift */,
+				432CBE3B2210076B0064D2CA /* NearStation */,
+				432CBE3F2210076B0064D2CA /* TimeTable */,
+			);
+			path = VCforTRA;
+			sourceTree = "<group>";
+		};
+		432CBE3B2210076B0064D2CA /* NearStation */ = {
+			isa = PBXGroup;
+			children = (
+				432CBE3C2210076B0064D2CA /* NearStationViewController.swift */,
+				432CBE3D2210076B0064D2CA /* NearTableViewCell.swift */,
+			);
+			path = NearStation;
+			sourceTree = "<group>";
+		};
+		432CBE3F2210076B0064D2CA /* TimeTable */ = {
+			isa = PBXGroup;
+			children = (
+				432CBE432210076B0064D2CA /* TimeViewController.swift */,
+				432CBE422210076B0064D2CA /* TImeTableViewController.swift */,
+				432CBE402210076B0064D2CA /* TrainTableViewCell.swift */,
+				432CBE412210076B0064D2CA /* trainInfo.swift */,
+			);
+			path = TimeTable;
 			sourceTree = "<group>";
 		};
 		A3DA339558D283B65E468BB9 /* Frameworks */ = {
@@ -268,13 +313,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				432CBE34220D7C100064D2CA /* DetailViewController.swift in Sources */,
+				432CBE492210076B0064D2CA /* TrainTableViewCell.swift in Sources */,
+				432CBE4B2210076B0064D2CA /* TImeTableViewController.swift in Sources */,
+				432CBE462210076B0064D2CA /* NearStationViewController.swift in Sources */,
 				432CBE1F220C12360064D2CA /* UpperTableViewController.swift in Sources */,
+				432CBE4C2210076B0064D2CA /* TimeViewController.swift in Sources */,
+				432CBE4A2210076B0064D2CA /* trainInfo.swift in Sources */,
 				432CBE19220C08B70064D2CA /* SecondViewController.swift in Sources */,
 				432CBE24220C333F0064D2CA /* LowerViewController.swift in Sources */,
+				432CBE472210076B0064D2CA /* NearTableViewCell.swift in Sources */,
 				432CBE27220C33620064D2CA /* LowerTableViewController.swift in Sources */,
 				432CBE21220C125C0064D2CA /* UpperTableViewCell.swift in Sources */,
 				432CBE02220BFB490064D2CA /* AppDelegate.swift in Sources */,
 				432CBE1D220C11020064D2CA /* THSRInfo.swift in Sources */,
+				432CBE452210076B0064D2CA /* MainViewController.swift in Sources */,
 				432CBE14220BFE8F0064D2CA /* FirstViewController.swift in Sources */,
 				432CBE1B220C09840064D2CA /* UpperViewController.swift in Sources */,
 				432CBE29220C33B80064D2CA /* LowerTableViewCell.swift in Sources */,
